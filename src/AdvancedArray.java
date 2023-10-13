@@ -1,9 +1,4 @@
-public class AdvancedArray{
-
-    private int length = 0;
-    private int numOfElem = 0;
-    private int[] advancedArray;
-    private int[] copyOfArray;
+public class AdvancedArray {
 
     public static void main(String[] args) {
         AdvancedArray array1 = new AdvancedArray();
@@ -11,6 +6,12 @@ public class AdvancedArray{
             array1.add(i);
         }
     }
+
+    private int length;
+    private int numOfElem;
+    private int[] advancedArray;
+    private int[] copyOfArray;
+
     public AdvancedArray() {
         advancedArray = new int[length];
     }
@@ -19,17 +20,17 @@ public class AdvancedArray{
         advancedArray = new int[length];
     }
 
-    public int getNumOfElem() {
+    private int getNumOfElem() {
         return numOfElem;
     }
-    public void setNumOfElem(int numOfElem) {
+    private void setNumOfElem(int numOfElem) {
         this.numOfElem = numOfElem;
     }
 
-    public int getLength() {
+    private int getLength() {
         return length;
     }
-    public void setLength(int length) {
+    private void setLength(int length) {
         this.length = length;
     }
 
@@ -116,7 +117,6 @@ public class AdvancedArray{
         this.decreaseNumberOfElements();
     }
     public int numberOfElements() {
-        System.out.println(numOfElem);
         return numOfElem;
     }
     public int getElementByIndex(int index) {
