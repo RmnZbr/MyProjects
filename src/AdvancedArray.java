@@ -1,110 +1,128 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class AdvancedArray{
 
     private int length = 0;
     private int numOfElem = 0;
-    private int[] array;
-    private int[] advArray;
+    private int[] advancedArray;
+    private int[] copyOfArray;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         AdvancedArray array1 = new AdvancedArray();
-        array1.add(3);
-        array1.add(4);
-        array1.add(5);
-        array1.add(6);
-        array1.add(7);
-        array1.add(22,2);
-        array1.add(22,1);
-        array1.add(22,6);
-        array1.add(5,0);
+        for (int i = 0; i < 100; i++) {
+            array1.add(i);
+        }
     }
-    public AdvancedArray(){
-        array = new int[length];
-        System.out.println(Arrays.toString(array));
+    public AdvancedArray() {
+        advancedArray = new int[length];
     }
-    public AdvancedArray(int length){
+    public AdvancedArray(int length) {
         setLength(length);
-        array = new int[length];
-        System.out.println(Arrays.toString(array));
+        advancedArray = new int[length];
     }
 
-    public int getNumOfElem(){
+    public int getNumOfElem() {
         return numOfElem;
     }
-    public void setNumOfElem(int numOfElem){
+    public void setNumOfElem(int numOfElem) {
         this.numOfElem = numOfElem;
     }
 
-    public int getLength(){
+    public int getLength() {
         return length;
     }
-    public void setLength(int length){
+    public void setLength(int length) {
         this.length = length;
     }
 
-    private int increaseArray(){
-        if (length < numOfElem){
-            setLength(length + 1);
+    private int increaseArray() {
+        if (length < numOfElem) {
+            setLength(++length);
         }
-
         return length;
     }
-    private int increaseElem(){
-        setNumOfElem(numOfElem + 1);
+    private int increaseNumberOfElemenets() {
+        setNumOfElem(++numOfElem);
         return numOfElem;
     }
-    private void createNewArray(int length){
-        advArray = new int[length];
+    private int decreaseArray() {
+        if (length == numOfElem) {
+            setLength(--length);
+        }
+        return length;
     }
-    private void addElemInArray(int elem){
+    private int decreaseNumberOfElements() {
+        setNumOfElem(--numOfElem);
+        return numOfElem;
+    }
+    private void createNewArray(int length) {
+        copyOfArray = new int[length];
+    }
+    private void addElementInArray(int elem) {
         if (length > 1) {
-
             for (int i = 0; i < numOfElem - 1; i++) {
-                advArray[i] = array[i];
+                copyOfArray[i] = advancedArray[i];
             }
         }
-        advArray[numOfElem - 1] = elem;
-        array = advArray;
+        copyOfArray[numOfElem - 1] = elem;
+        advancedArray = copyOfArray;
     }
-    private void addElemInArray(int elem, int index){
-        if(length == 1 && index == 0){
-            advArray[0] = elem;
-            array = advArray;
+    private void addElementInArray(int elem, int index) {
+        if (length == 1) {
+            copyOfArray[0] = elem;
+            advancedArray = copyOfArray;
         } if (index == 0) {
-            for (int i = numOfElem; i > 1; i--) {
-                advArray[i - 1] = array[i - 2];
-            }
-            advArray[0] = elem;
-            advArray[1] = array[0];
-            array = advArray;
-        } else {
+            for (int i = numOfElem - 1; i > 0; i--) {
 
+                copyOfArray[i] = advancedArray[i - 1];
+            }
+            copyOfArray[0] = elem;
+            advancedArray = copyOfArray;
+        } else {
             for(int i = 0; i < index; i++){
-                advArray[i] = array[i];
+                copyOfArray[i] = advancedArray[i];
             }
             for(int i = numOfElem; i > index; i--) {
-                advArray[i - 1] = array[i - 2];
+                copyOfArray[i - 1] = advancedArray[i - 2];
             }
-            advArray[index] = elem;
-            array = advArray;
+            copyOfArray[index] = elem;
+            advancedArray = copyOfArray;
         }
     }
-
-    public void add(int elem){
-        this.increaseElem();
-        this.increaseArray();
-        this.createNewArray(length);
-        this.addElemInArray(elem);
-        System.out.println(Arrays.toString(array));
-    }
-    public void add(int elem, int index){
-        this.increaseElem();
-        this.increaseArray();
-        this.createNewArray(length);
-        this.addElemInArray(elem, index);
-        System.out.println(Arrays.toString(array));
+    private void deleteElementFromArray(int index) {
+        for (int i = numOfElem - 1; i > index; i--) {
+            copyOfArray[i - 1] = advancedArray[i];
+        }
+        for (int i = 0; i < index; i++) {
+            copyOfArray[i] = advancedArray[i];
+        }
+        advancedArray = copyOfArray;
     }
 
+    public void add(int elem) {
+        this.increaseNumberOfElemenets();
+        this.increaseArray();
+        this.createNewArray(length);
+        this.addElementInArray(elem);
+    }
+    public void add(int elem, int index) {
+        this.increaseNumberOfElemenets();
+        this.increaseArray();
+        this.createNewArray(length);
+        this.addElementInArray(elem, index);
+    }
+    public void delete(int index) {
+        this.decreaseArray();
+        this.createNewArray(length);
+        this.deleteElementFromArray(index);
+        this.decreaseNumberOfElements();
+    }
+    public int numberOfElements() {
+        System.out.println(numOfElem);
+        return numOfElem;
+    }
+    public int getElementByIndex(int index) {
+        return advancedArray[index];
+    }
+    public void set(int elem,int index) {
+        advancedArray[index] = elem;
+    }
 }
