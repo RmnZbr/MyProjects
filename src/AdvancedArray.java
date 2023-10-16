@@ -12,15 +12,15 @@ public class AdvancedArray {
     }
 
     public void add(int elem) {
-        if (size < this.array.length) {
-            this.array[size++] = elem;
+        if (size < array.length) {
+            array[size++] = elem;
         } else {
-            int[] secondArray = new int[this.array.length * 10];
+            int[] secondArray = new int[array.length * 10];
             for (int i = 0; i < size; i++) {
-                secondArray[i] = this.array[i];
+                secondArray[i] = array[i];
             }
             secondArray[size++] = elem;
-            this.array = secondArray;
+            array = secondArray;
         }
     }
     public void add(int elem, int index) {
