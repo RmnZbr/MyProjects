@@ -1,7 +1,8 @@
 public class AdvancedArray {
 
-    private int size;
     private static final int LENGTH = 100;
+
+    private int size;
     private int[] array;
 
     public AdvancedArray() {
@@ -24,23 +25,24 @@ public class AdvancedArray {
         }
     }
     public void add(int elem, int index) {
-        int[] secondArray = new int[array.length];
-        if (size == array.length) {
-            secondArray = new int[array.length * 10];
-        }
         if (index == size) {
             this.add(elem);
-        }
-        if (index < size) {
-            for (int i = 0; i < index; i++) {
-                secondArray[i] = array[i];
+        } else {
+            int[] secondArray = new int[array.length];
+            if (size == array.length) {
+                secondArray = new int[array.length * 10];
             }
-            for (int i = size; i > index; i--) {
-                secondArray[i] = array[i - 1];
+            if (index < size) {
+                for (int i = 0; i < index; i++) {
+                    secondArray[i] = array[i];
+                }
+                for (int i = size; i > index; i--) {
+                    secondArray[i] = array[i - 1];
+                }
+                secondArray[index] = elem;
+                array = secondArray;
+                size++;
             }
-            secondArray[index] = elem;
-            array = secondArray;
-            size++;
         }
     }
     public int numberOfElements() {
