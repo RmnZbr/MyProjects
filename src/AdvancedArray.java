@@ -1,59 +1,83 @@
 public class AdvancedArray {
 
-    private static final int LENGTH = 100;
+    private static final int DEFAULT_SIZE = 100;
 
     private int size;
     private int[] array;
 
     public AdvancedArray() {
-        this.array = new int[LENGTH];
+        this.array = new int[DEFAULT_SIZE];
     }
+
     public AdvancedArray(int length) {
-        this.array = new int[length];
+        if (length <= 2) {
+            this.array = new int[2];
+        } else {
+            int number = 2;
+            for (int i = 2; i < 32; i++) {
+                number *= 2;
+                if (number / length >= 1) {
+                    break;
+                }
+            }
+            this.array = new int[number];
+        }
     }
 
     public void add(int elem) {
-        if (size < array.length) {
-            array[size++] = elem;
-        } else {
-            int[] secondArray = new int[array.length * 10];
+        if (size == array.length) {
+            int[] secondArray = new int[array.length * 2];
             for (int i = 0; i < size; i++) {
                 secondArray[i] = array[i];
             }
-            secondArray[size++] = elem;
+            secondArray[size] = elem;
             array = secondArray;
+            size++;
+        } else {
+            array[size++] = elem;
         }
     }
-    public void add(int elem, int index) {
+
+    public void add(int elem, int index){
         if (index == size) {
             this.add(elem);
+        } else if (size == array.length) {
+            int[] secondArray = new int[array.length * 2];
+            for (int i = 0; i < index; i++) {
+                secondArray[i] = array[i];
+            }
+            for (int i = size; i > index; i--) {
+                secondArray[i] = array[i - 1];
+            }
+            secondArray[index] = elem;
+            array = secondArray;
+            size++;
         } else {
             int[] secondArray = new int[array.length];
-            if (size == array.length) {
-                secondArray = new int[array.length * 10];
+            for (int i = 0; i < index; i++) {
+                secondArray[i] = array[i];
             }
-            if (index < size) {
-                for (int i = 0; i < index; i++) {
-                    secondArray[i] = array[i];
-                }
-                for (int i = size; i > index; i--) {
-                    secondArray[i] = array[i - 1];
-                }
-                secondArray[index] = elem;
-                array = secondArray;
-                size++;
+            for (int i = size; i > index; i--) {
+                secondArray[i] = array[i - 1];
             }
+            secondArray[index] = elem;
+            array = secondArray;
+            size++;
         }
     }
+
     public int numberOfElements() {
         return size;
     }
+
     public int getElementByIndex(int index) {
         return array[index];
     }
+
     public void set(int elem, int index) {
         array[index] = elem;
     }
+
     public void delete(int index) {
         int[] secondArray = new int[array.length];
         for (int i = size - 1; i > index; i--) {
@@ -65,4 +89,5 @@ public class AdvancedArray {
         array = secondArray;
         size--;
     }
+
 }
