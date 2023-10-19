@@ -1,6 +1,6 @@
 public class AdvancedArray {
 
-    private static final int DEFAULT_SIZE = 100;
+    private static final int DEFAULT_SIZE = 16;
 
     private int size;
     private int[] array;
