@@ -98,7 +98,6 @@ public class AdvancedArray {
                 break;
             }
         }
-        System.out.println(contains);
         return contains;
     }
 
