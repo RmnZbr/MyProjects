@@ -99,7 +99,6 @@ public class AdvancedListArray {
 
     public boolean contains(Node node){
         boolean contains = false;
-
     }
 
 }

@@ -11,5 +11,6 @@ class Node {
     public boolean equals(Object obj) {
         Node node = (Node) obj;
         return this.elem == node.elem;
+
     }
 }
