@@ -90,4 +90,24 @@ public class AdvancedArray {
         size--;
     }
 
+    public boolean contains(int elem) {
+        boolean contains = false;
+        for(int i = 0; i < array.length; i++){
+            if(array[i] == elem) {
+                contains = true;
+                break;
+            }
+        }
+        System.out.println(contains);
+        return contains;
+    }
+
+    public void addIfNotExist(int elem) {
+        if (contains(elem)) {
+            System.out.println("The element exists in the array, the element has not benn added.");
+        } else {
+            add(elem);
+        }
+    }
+
 }
