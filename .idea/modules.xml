@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Task1.iml" filepath="$PROJECT_DIR$/Task1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dog/Dog.iml" filepath="$PROJECT_DIR$/Dog/Dog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Game/Game.iml" filepath="$PROJECT_DIR$/Game/Game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GoodDogTestDrive/GoodDogTestDrive.iml" filepath="$PROJECT_DIR$/GoodDogTestDrive/GoodDogTestDrive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Loopy/Loopy.iml" filepath="$PROJECT_DIR$/Loopy/Loopy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Projects.iml" filepath="$PROJECT_DIR$/Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeaBattle/SeaBattle.iml" filepath="$PROJECT_DIR$/SeaBattle/SeaBattle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TapeDeck/TapeDeck.iml" filepath="$PROJECT_DIR$/TapeDeck/TapeDeck.iml" />
     </modules>
   </component>
 </project>
