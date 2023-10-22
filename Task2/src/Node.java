@@ -9,8 +9,10 @@ class Node {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj ==null) {
+            return false;
+        }
         Node node = (Node) obj;
         return this.elem == node.elem;
-
     }
 }

@@ -6,18 +6,26 @@ public class AdvancedListArray {
 
     public void add(int elem) {
         Node node = new Node(elem);
-        Node currentNode = head;
         if (head == null) {
             head = node;
             tail = node;
             size++;
-        } else {
-            while(currentNode.next != null) {
-                currentNode = currentNode.next;
-            }
-            currentNode.next = node;
-            tail = currentNode.next;
+        }
+        if (head == tail && size == 1) {
+            head.next = node;
+            tail = node;
             size++;
+        } else {
+            tail.next = node;
+            tail = node;
+            size++;
+
+//            while(currentNode.next != null) {
+//                currentNode = currentNode.next;
+//            }
+//            currentNode.next = node;
+//            tail = currentNode.next;
+//            size++;
         }
     }
 
@@ -75,6 +83,7 @@ public class AdvancedListArray {
     }
 
     public int numberOfElements() {
+        System.out.println(size);
         return size;
     }
 
@@ -99,6 +108,7 @@ public class AdvancedListArray {
 
     public boolean contains(Node node){
         boolean contains = false;
+        return contains;
     }
 
 }
