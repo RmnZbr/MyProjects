@@ -103,7 +103,7 @@ public class AdvancedArray {
 
     public void addIfNotExist(int elem) {
         if (contains(elem)) {
-            System.out.println("The element exists in the array, the element has not benn added.");
+            System.out.println("The element exists in the array, the element has not been added.");
         } else {
             add(elem);
         }
