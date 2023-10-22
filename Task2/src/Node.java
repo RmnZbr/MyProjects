@@ -1,5 +1,4 @@
-class Node {
-
+public class Node {
 
     public int elem;
     Node next;
@@ -10,7 +9,7 @@ class Node {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj ==null) {
+        if (obj == null) {
             return false;
         }
         Node node = (Node) obj;

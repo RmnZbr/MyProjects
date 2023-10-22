@@ -1,6 +1,5 @@
 public class AdvancedListArray {
 
-
     private Node head;
     private Node tail;
     private int size = 0;
@@ -11,37 +10,32 @@ public class AdvancedListArray {
             head = node;
             tail = node;
             size++;
-        }
-        if (head == tail && size == 1) {
-            head.next = node;
-            tail = node;
-            size++;
         } else {
             tail.next = node;
             tail = node;
             size++;
-
-//            while(currentNode.next != null) {
-//                currentNode = currentNode.next;
-//            }
-//            currentNode.next = node;
-//            tail = currentNode.next;
-//            size++;
         }
     }
 
     public void add (int elem, int index) {
         Node node = new Node(elem);
-        Node currentNode = head;
-        for (int i = 1; i < index; i++) {
-            currentNode = currentNode.next;
+        if(index == 0) {
+            node.next = head;
+            head = node;
+            size++;
+        } else {
+            Node currentNode = head;
+            for (int i = 1; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+            if(currentNode == tail) {
+                add(elem);
+            } else {
+                node.next = currentNode.next;
+                currentNode.next = node;
+                size++;
+            }
         }
-        node.next = currentNode.next;
-        currentNode.next = node;
-        if (node.next == null) {
-            tail = node;
-        }
-        size++;
     }
 
     public void delete(int index) {
@@ -84,7 +78,6 @@ public class AdvancedListArray {
     }
 
     public int numberOfElements() {
-        System.out.println(size);
         return size;
     }
 
@@ -96,20 +89,26 @@ public class AdvancedListArray {
         return currentNode.elem;
     }
 
-    public void print() {
-        Node currentNode = head;
-        if (head != null) {
-            System.out.println(head.elem);
-        }
-        while(currentNode.next != null) {
-                currentNode = currentNode.next;
-                System.out.println(currentNode.elem);
-        }
-    }
-
     public boolean contains(Node node){
         boolean contains = false;
+        Node currentNode = head;
+        for (int i = 0; i < size; i++) {
+            if(currentNode.equals(node)) {
+                contains = true;
+                break;
+            }
+            currentNode = currentNode.next;
+        }
         return contains;
+    }
+
+    public void addIfNotExist(int elem) {
+        Node node = new Node(elem);
+        if(contains(node)) {
+            System.out.println("The element exists in the array, the element has not been added.");
+        } else {
+            add(elem);
+        }
     }
 
 }
