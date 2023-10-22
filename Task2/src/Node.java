@@ -1,5 +1,6 @@
 class Node {
 
+
     public int elem;
     Node next;
 

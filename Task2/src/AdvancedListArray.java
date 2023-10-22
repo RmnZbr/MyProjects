@@ -1,5 +1,6 @@
 public class AdvancedListArray {
 
+
     private Node head;
     private Node tail;
     private int size = 0;

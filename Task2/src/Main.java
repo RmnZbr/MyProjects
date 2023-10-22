@@ -1,5 +1,6 @@
 public class Main {
 
+
     public static void main(String[] args) {
 
         AdvancedListArray list = new AdvancedListArray();
