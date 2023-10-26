@@ -6,6 +6,16 @@ public class AdvancedListArray {
     private Node tail;
     private int size = 0;
 
+    static class Node {
+
+        public int elem;
+        Node next;
+
+        public Node(int elem) {
+            this.elem = elem;
+        }
+    }
+
     public void add(int elem) {
         Node node = new Node(elem);
         if(head == null) {
@@ -92,10 +102,9 @@ public class AdvancedListArray {
     }
 
     public boolean contains(int elem) {
-        Node node = new Node(elem);
         Node currentNode = head;
         for(int i = 0; i < size; i++) {
-            if(currentNode.equals(node)) {
+            if(currentNode.elem == elem) {
             return true;
             }
             currentNode = currentNode.next;
@@ -110,5 +119,4 @@ public class AdvancedListArray {
             add(elem);
         }
     }
-
 }
