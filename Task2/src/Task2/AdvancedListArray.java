@@ -8,16 +8,16 @@ public class AdvancedListArray {
 
     static class Node {
 
-        public int elem;
+        public int value;
         Node next;
 
-        public Node(int elem) {
-            this.elem = elem;
+        public Node(int value) {
+            this.value = value;
         }
     }
 
-    public void add(int elem) {
-        Node node = new Node(elem);
+    public void add(int value) {
+        Node node = new Node(value);
         if(head == null) {
             head = node;
             tail = node;
@@ -29,8 +29,8 @@ public class AdvancedListArray {
         }
     }
 
-    public void add(int elem, int index) {
-        Node node = new Node(elem);
+    public void add(int value, int index) {
+        Node node = new Node(value);
         if(index == 0) {
             node.next = head;
             head = node;
@@ -41,7 +41,7 @@ public class AdvancedListArray {
                 currentNode = currentNode.next;
             }
             if(currentNode == tail) {
-                add(elem);
+                add(value);
             } else {
                 node.next = currentNode.next;
                 currentNode.next = node;
@@ -67,8 +67,8 @@ public class AdvancedListArray {
         }
     }
 
-    public void set(int elem, int index) {
-        Node node = new Node(elem);
+    public void set(int value, int index) {
+        Node node = new Node(value);
         if(index == 0) {
             node.next = head.next;
             head = node;
@@ -98,13 +98,13 @@ public class AdvancedListArray {
         for(int i = 0; i < index; i++) {
             currentNode = currentNode.next;
         }
-        return currentNode.elem;
+        return currentNode.value;
     }
 
-    public boolean contains(int elem) {
+    public boolean contains(int value) {
         Node currentNode = head;
         for(int i = 0; i < size; i++) {
-            if(currentNode.elem == elem) {
+            if(currentNode.value == value) {
             return true;
             }
             currentNode = currentNode.next;
@@ -112,11 +112,11 @@ public class AdvancedListArray {
         return false;
     }
 
-    public void addIfNotExist(int elem) {
-        if(contains(elem)) {
+    public void addIfNotExist(int value) {
+        if(contains(value)) {
             System.out.println("The element exists in the array, the element has not been added.");
         } else {
-            add(elem);
+            add(value);
         }
     }
 }

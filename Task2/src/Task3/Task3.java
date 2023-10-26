@@ -1,3 +1,5 @@
+package Task3;
+
 public class Task3 {
 
     int[] array = {1, 3, 8, 2, 1, 9, 11, 4, 7, 17};
