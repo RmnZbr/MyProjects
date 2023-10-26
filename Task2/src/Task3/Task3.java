@@ -1,9 +1,9 @@
-public class Main {
+public class Task3 {
 
     int[] array = {1, 3, 8, 2, 1, 9, 11, 4, 7, 17};
 
     public static void main(String[] args) {
-        Main test = new Main();
+        Task3 test = new Task3();
         test.maxSumOfAscendingNumbers(test.array);
     }
 
@@ -25,5 +25,4 @@ public class Main {
         }
         return maxSum;
     }
-
 }
