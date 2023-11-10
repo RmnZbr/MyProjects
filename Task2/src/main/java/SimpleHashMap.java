@@ -38,15 +38,8 @@ public class SimpleHashMap implements SimpleMap {
         this.array = new Node[DEFAULT_SIZE];
     }
 
-    private int getIndex(String key) {
-        int index = key.hashCode() % array.length;
-        if (index >= 0) {
-            return index;
-        }
-        return -index;
-    }
-    private int getIndexForNewArray(String key) {
-        int index = key.hashCode() % (array.length * 2);
+    private int getIndex(String key, int correctLength) {
+        int index = key.hashCode() % correctLength;
         if (index >= 0) {
             return index;
         }
@@ -58,13 +51,13 @@ public class SimpleHashMap implements SimpleMap {
             for (int i = 0; i < array.length; i++) {
                 Node element = array[i];
                 while (element != null) {
-                    int newIndex = getIndexForNewArray(element.key);
+                    int newIndex = getIndex(element.key, newArray.length);
                     if (newArray[newIndex] == null) {
                         newArray[newIndex] = new Node(element.key, element.value);
                     } else {
-                        newArray[newIndex].next = newArray[newIndex];
-                        newArray[newIndex].value = element.value;
-                        newArray[newIndex].key = element.key;
+                        Node node = new Node(element.key, element.value);
+                        node.next = newArray[newIndex];
+                        newArray[newIndex] = node;
                     }
                     element = element.next;
                 }
@@ -86,7 +79,7 @@ public class SimpleHashMap implements SimpleMap {
 
     @Override
     public void put(String key, Object value) {
-        int index = getIndex(key);
+        int index = getIndex(key, array.length);
         if (array[index] == null) {
             array[index] = new Node(key, value);
             size++;
@@ -103,10 +96,10 @@ public class SimpleHashMap implements SimpleMap {
     }
     @Override
     public Object get(String key) {
-        if (searchByNodes(key, getIndex(key)) == null) {
+        if (searchByNodes(key, getIndex(key, array.length)) == null) {
             return null;
         } else {
-            return searchByNodes(key, getIndex(key)).value;
+            return searchByNodes(key, getIndex(key, array.length)).value;
         }
     }
 }
