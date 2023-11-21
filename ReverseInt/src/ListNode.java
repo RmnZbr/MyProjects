@@ -1,7 +1,6 @@
 public class ListNode {
     int val;
     ListNode next;
-    ListNode head;
     ListNode() {}
     ListNode(int val) {
         this.val = val;
@@ -19,15 +18,12 @@ class Solution {
         if (head.next == null) {
             return head;
         }
-        ListNode reverseList = new ListNode();
-        reverseList.head = head.next;
-        reverseList.head.next = head;
-        reverseList.head.next.next = null;
-        head = head.next;
-        while (head.next != null) {
-            ListNode node = head.next;
-            node.next = reverseList.head;
-            reverseList.head = node;
+        ListNode reverseListNext = new ListNode(head.val);
+        ListNode reverseList = new ListNode(head.next.val, reverseListNext);
+        head = head.next.next;
+        while (head != null) {
+            ListNode currentNode = new ListNode(head.val, reverseList);
+            reverseList = currentNode;
             head = head.next;
         }
     return reverseList;
