@@ -1,13 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
-    private final int[] ARRAY = new int[] {1, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7};
+    private final int[] ARRAY = new int[] {1, 2, 3, 4, 5, 6, 5, 7, 8, 9, -1,};
 
     public static void main(String[] args) {
+    }
 
+    public int findDouble(int[] array) {
+        List<Integer> list = createList(array);
+        for (int i = 0; i < array.length; i++) {
+            if (list.indexOf(array[i]) != list.lastIndexOf(array[i])) {
+                return array[i];
+            }
+        }
+        return -1;
+    }
+
+    public int findTheOnly(int[] array) {
+        List<Integer> list = createList(array);
+        for (int i = 0; i < array.length; i++) {
+            if (list.indexOf(array[i]) == list.lastIndexOf(array[i])) {
+                return array[i];
+            }
+        }
+        return -1;
+    }
+
+    private List<Integer> createList(int[] array) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            list.add(array[i]);
+        }
+        return list;
     }
 
     public int findDoubleValue(int[] array) {
-        int[] sortedArray = new int[array.length];
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (array[i] == array[j]) {
